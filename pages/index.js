@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { initiateCheckout } from '../lib/payments';
 
 import products from '../products.json';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-    const renderProduct = ({ id, title, description, image, price }, index) => {
+    const renderProduct = ({ id, title, description, image, price }) => {
         return (
             <li className={styles.card} key={id}>
                 <a href="https://nextjs.org/docs">
@@ -19,6 +20,23 @@ export default function Home() {
                     <p>$ {price}</p>
                     <p>{description}</p>
                 </a>
+                <p>
+                    <button
+                        className={styles.button}
+                        onClick={() =>
+                            initiateCheckout({
+                                lineItems: [
+                                    {
+                                        price: id,
+                                        quantity: 1,
+                                    },
+                                ],
+                            })
+                        }
+                    >
+                        Buy now!
+                    </button>
+                </p>
             </li>
         );
     };
