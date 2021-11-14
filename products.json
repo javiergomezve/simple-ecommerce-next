@@ -1,0 +1,25 @@
+[
+    {
+        "id": "prod_KaxYQvexqJpbsx",
+        "title": "Space Jelly Tshirt",
+        "description": "Bring Cosmo the space Jellyfish to your wardrobe with this high quality tshirt.",
+        "image": "/images/spacejelly-tshirt.png",
+        "price": 20.0
+    },
+
+    {
+        "id": "prod_KaxbSwmnGsk5Yv",
+        "title": "Space Jelly Stickers",
+        "description": "Add some flare to your laptop with a sticker of Cosmo the Space Jellyfish.",
+        "image": "/images/spacejelly-stickers.png",
+        "price": 10.0
+    },
+
+    {
+        "id": "prod_KaxcgSrFGPn2ie",
+        "title": "Space Jelly Combo",
+        "description": "Show your love for Cosmo with a tshirt and sticker combo pack!",
+        "image": "/images/spacejelly-combo.png",
+        "price": 25.0
+    }
+]

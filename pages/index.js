@@ -1,8 +1,28 @@
 import Head from 'next/head';
 import Image from 'next/image';
+
+import products from '../products.json';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
+    const renderProduct = ({ id, title, description, image, price }, index) => {
+        return (
+            <li className={styles.card} key={id}>
+                <a href="https://nextjs.org/docs">
+                    <Image
+                        src={image}
+                        alt="Space Jelly Tshirt"
+                        width="100%"
+                        height="100%"
+                    />
+                    <h2>{title}</h2>
+                    <p>$ {price}</p>
+                    <p>{description}</p>
+                </a>
+            </li>
+        );
+    };
+
     return (
         <div className={styles.container}>
             <Head>
@@ -21,52 +41,7 @@ export default function Home() {
                     The best space jellyfish swag on the web!
                 </p>
 
-                <ul className={styles.grid}>
-                    <li className={styles.card}>
-                        <a href="https://nextjs.org/docs">
-                            <img
-                                src="/images/spacejelly-tshirt.png"
-                                alt="Space Jelly Tshirt"
-                            />
-                            <h2>Space Jelly Tshirt</h2>
-                            <p>$20.00</p>
-                            <p>
-                                Bring Cosmo the space Jellyfish to your wardrobe
-                                with this high quality tshirt.
-                            </p>
-                        </a>
-                    </li>
-
-                    <li className={styles.card}>
-                        <a href="https://nextjs.org/learn">
-                            <img
-                                src="/images/spacejelly-stickers.png"
-                                alt="Space Jelly Stickers"
-                            />
-                            <h2>Space Jelly Stickers</h2>
-                            <p>$10.00</p>
-                            <p>
-                                Add some flare to your laptop with a sticker of
-                                Cosmo the Space Jellyfish.
-                            </p>
-                        </a>
-                    </li>
-
-                    <li className={styles.card}>
-                        <a href="https://github.com/vercel/next.js/tree/master/examples">
-                            <img
-                                src="/images/spacejelly-combo.png"
-                                alt="Space Jelly Combo"
-                            />
-                            <h2>Space Jelly Combo</h2>
-                            <p>$25.00</p>
-                            <p>
-                                Show your love for Cosmo with a tshirt and
-                                sticker combo pack!
-                            </p>
-                        </a>
-                    </li>
-                </ul>
+                <ul className={styles.grid}>{products.map(renderProduct)}</ul>
             </main>
 
             <footer className={styles.footer}>
