@@ -142,3 +142,22 @@
 .productDetail div {
     max-width: 400px;
 }
+
+.table {
+    margin: 2em;
+}
+
+.table th,
+.table td {
+    padding: 1em 2em;
+    font-size: 1em;
+}
+
+.table th {
+    background: #000;
+    color: #fff;
+}
+
+.table td {
+    text-align: center;
+}
