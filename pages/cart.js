@@ -6,6 +6,7 @@ import products from '../products.json';
 import styles from '../styles/Home.module.css';
 import { useCart } from '../hooks/useCart';
 import CartIcon from '../components/CartIcon';
+import QuantityForm from '../components/QuantityForm';
 
 export default function Cart() {
     const { cartItems, checkout } = useCart();
@@ -71,10 +72,23 @@ export default function Cart() {
                         </tr>
                     </thead>
                     <tbody>
+                        {cartItems.length === 0 && (
+                            <tr>
+                                <td colSpan={4}>
+                                    Your cart is empty.{' '}
+                                    <Link href="/">
+                                        <a>Keep buying</a>
+                                    </Link>
+                                    .
+                                </td>
+                            </tr>
+                        )}
                         {cartItems.map(({ id, quantity, pricePerItem }) => (
                             <tr key={id}>
                                 <td>{products.find(p => p.id === id).title}</td>
-                                <td>{quantity}</td>
+                                <td>
+                                    <QuantityForm id={id} quantity={quantity} />
+                                </td>
                                 <td>$ {pricePerItem}</td>
                                 <td>$ {pricePerItem * quantity}</td>
                             </tr>
@@ -82,9 +96,11 @@ export default function Cart() {
                     </tbody>
                 </table>
 
-                <button className={styles.button} onClick={checkout}>
-                    Check out
-                </button>
+                {cartItems.length > 0 && (
+                    <button className={styles.button} onClick={checkout}>
+                        Check out
+                    </button>
+                )}
             </main>
 
             <footer className={styles.footer}>
