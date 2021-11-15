@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import products from '../products.json';
@@ -10,34 +9,6 @@ import QuantityForm from '../components/QuantityForm';
 
 export default function Cart() {
     const { cartItems, checkout } = useCart();
-
-    const renderProduct = ({ id, title, description, image, price }) => {
-        return (
-            <li className={styles.card} key={id}>
-                <Link href={`/products/${id}`}>
-                    <a>
-                        <Image
-                            src={image}
-                            alt={description}
-                            width="100%"
-                            height="100%"
-                        />
-                        <h2>{title}</h2>
-                        <p>$ {price}</p>
-                        <p>{description}</p>
-                    </a>
-                </Link>
-                <p>
-                    <button
-                        className={styles.button}
-                        onClick={() => addToCart({ id })}
-                    >
-                        Add to cart
-                    </button>
-                </p>
-            </li>
-        );
-    };
 
     return (
         <div className={styles.container}>
@@ -77,12 +48,12 @@ export default function Cart() {
                                 <td colSpan={4}>
                                     Your cart is empty.{' '}
                                     <Link href="/">
-                                        <a>Keep buying</a>
+                                        <a>Keep buying.</a>
                                     </Link>
-                                    .
                                 </td>
                             </tr>
                         )}
+
                         {cartItems.map(({ id, quantity, pricePerItem }) => (
                             <tr key={id}>
                                 <td>{products.find(p => p.id === id).title}</td>
