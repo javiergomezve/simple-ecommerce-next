@@ -9,7 +9,7 @@
     font-size: 2em;
 }
 
-.navCart button {
+.navCart a {
     background: none;
     border: none;
     display: flex;
