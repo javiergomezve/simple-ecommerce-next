@@ -1,27 +1,30 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import products from '../products.json';
 import styles from '../styles/Home.module.css';
 import { useCart } from '../hooks/useCart';
 
 export default function Home() {
-    const { subTotal, totalItems, addToCart, checkout } = useCart();
+    const { addToCart } = useCart();
 
     const renderProduct = ({ id, title, description, image, price }) => {
         return (
             <li className={styles.card} key={id}>
-                <a href="#!">
-                    <Image
-                        src={image}
-                        alt={description}
-                        width="100%"
-                        height="100%"
-                    />
-                    <h2>{title}</h2>
-                    <p>$ {price}</p>
-                    <p>{description}</p>
-                </a>
+                <Link href={`/products/${id}`}>
+                    <a>
+                        <Image
+                            src={image}
+                            alt={description}
+                            width="100%"
+                            height="100%"
+                        />
+                        <h2>{title}</h2>
+                        <p>$ {price}</p>
+                        <p>{description}</p>
+                    </a>
+                </Link>
                 <p>
                     <button
                         className={styles.button}

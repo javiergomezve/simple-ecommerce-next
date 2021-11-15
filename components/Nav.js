@@ -8,7 +8,9 @@ const Nav = () => {
 
     return (
         <nav className={styles.nav}>
-            <p className={styles.navTitle}>Space Jelly Shop</p>
+            <a href="/" className={styles.navTitle}>
+                Space Jelly Shop
+            </a>
             <p className={styles.navCart}>
                 <button onClick={checkout}>
                     <svg
