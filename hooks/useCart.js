@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 import products from '../products.json';
 import { initiateCheckout } from '../lib/payments';
@@ -11,6 +11,20 @@ const defaultCart = {
 
 export function useCartState() {
     const [cart, setCart] = useState(defaultCart);
+
+    useEffect(() => {
+        const stateFromLocalStorage =
+            window.localStorage.getItem('spacejelly_cart');
+        const data = stateFromLocalStorage && JSON.parse(stateFromLocalStorage);
+        if (data) {
+            setCart(data);
+        }
+    }, []);
+
+    useEffect(() => {
+        const data = JSON.stringify(cart);
+        window.localStorage.setItem('spacejelly_cart', data);
+    }, [cart]);
 
     const cartItems = Object.keys(cart.products).map(key => {
         const product = products.find(({ id }) => id === key);
