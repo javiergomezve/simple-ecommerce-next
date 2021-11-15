@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 
 import styles from '../styles/Nav.module.css';
 import { useCart } from '../hooks/useCart';
@@ -8,9 +8,10 @@ const Nav = () => {
 
     return (
         <nav className={styles.nav}>
-            <a href="/" className={styles.navTitle}>
-                Space Jelly Shop
-            </a>
+            <Link href="/">
+                <a className={styles.navTitle}>Space Jelly Shop</a>
+            </Link>
+
             <p className={styles.navCart}>
                 <button onClick={checkout}>
                     <svg
