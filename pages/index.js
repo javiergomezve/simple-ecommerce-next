@@ -11,7 +11,7 @@ export default function Home() {
 
     const renderProduct = ({ id, title, description, image, price }) => {
         return (
-            <li className={styles.card} key={id}>
+            <li key={id} className={styles.card}>
                 <Link href={`/products/${id}`}>
                     <a>
                         <Image
@@ -25,14 +25,14 @@ export default function Home() {
                         <p>{description}</p>
                     </a>
                 </Link>
-                <p>
+                {/* <p>
                     <button
                         className={styles.button}
                         onClick={() => addToCart({ id })}
                     >
                         Add to cart
                     </button>
-                </p>
+                </p> */}
             </li>
         );
     };

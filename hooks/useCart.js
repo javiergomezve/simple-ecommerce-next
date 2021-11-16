@@ -52,7 +52,7 @@ export function useCartState() {
 
             if (cartState.products[id]) {
                 cartState.products[id].quantity =
-                    parseInt(cartState.products[id].quantity) + 1;
+                    cartState.products[id].quantity + 1;
             } else {
                 cartState.products[id] = {
                     id,
